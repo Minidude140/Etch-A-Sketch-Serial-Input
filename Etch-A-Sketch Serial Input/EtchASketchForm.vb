@@ -33,6 +33,8 @@ Public Class EtchASketchForm
         'Set Drawing Cursor to Center Screen
         oldXValue = DrawingPictureBox.Width / 2
         oldYValue = DrawingPictureBox.Height / 2
+        'Start In Slider Input Mode
+        SliderInputRadioButton.Checked = True
     End Sub
 
     ''' <summary>
