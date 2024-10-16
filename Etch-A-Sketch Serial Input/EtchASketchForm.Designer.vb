@@ -95,6 +95,7 @@ Partial Class EtchASketchForm
         Me.XAxisTrackBar.Size = New System.Drawing.Size(286, 56)
         Me.XAxisTrackBar.TabIndex = 5
         Me.XAxisTrackBar.TickFrequency = 250
+        Me.XAxisTrackBar.Value = 5
         '
         'YAxisTrackBar
         '
@@ -103,6 +104,7 @@ Partial Class EtchASketchForm
         Me.YAxisTrackBar.Name = "YAxisTrackBar"
         Me.YAxisTrackBar.Size = New System.Drawing.Size(286, 56)
         Me.YAxisTrackBar.TabIndex = 6
+        Me.YAxisTrackBar.Value = 5
         '
         'XAxisSliderLabel
         '

@@ -91,7 +91,7 @@ Public Class EtchASketchForm
     End Sub
 
     ''' <summary>
-    ''' Scale Input to Picture box and Draw Line From Old Point (Store Globally) to Given New Point
+    ''' Scale Input to Picture box from Given Max Input and Draw Line From Old Point to Given New Point
     ''' </summary>
     ''' <param name="x"></param>
     ''' <param name="y"></param>
@@ -123,14 +123,18 @@ Public Class EtchASketchForm
     End Sub
 
     Private Sub XAxisTrackBar_ValueChanged(sender As Object, e As EventArgs) Handles XAxisTrackBar.ValueChanged
-        xValue = (250 / 10) * XAxisTrackBar.Value
-        yValue = (250 / 10) * YAxisTrackBar.Value
-        DrawFromValue(xValue, yValue, 250)
+        'Save Current Slider Positions
+        xValue = XAxisTrackBar.Value
+        yValue = YAxisTrackBar.Value
+        'Draw Line To New Points
+        DrawFromValue(xValue, yValue, 10)
     End Sub
 
     Private Sub YAxisTrackBar_ValueChanged(sender As Object, e As EventArgs) Handles YAxisTrackBar.ValueChanged
-        xValue = (250 / 10) * XAxisTrackBar.Value
-        yValue = (250 / 10) * YAxisTrackBar.Value
-        DrawFromValue(xValue, yValue, 250)
+        'Save Current Slider Positions
+        xValue = XAxisTrackBar.Value
+        yValue = YAxisTrackBar.Value
+        'Draw Line To New Points
+        DrawFromValue(xValue, yValue, 10)
     End Sub
 End Class
