@@ -5,7 +5,12 @@
 'https://github.com/Minidude140/Etch-A-Sketch-Serial-Input
 'Reused Code From: https://github.com/Minidude140/Etch-A-Sketch.git
 
-
+'TODO
+'[]Add Tool Strip For Color Change and Pen Size
+'[]Add Menu Strip and about form
+'[]When Serial Input is Selected Prompt user for Com input
+'[]Input Serial Data and Draw with it
+'[]Try Catch Serial input failures
 
 Public Class EtchASketchForm
     Dim backGroundColor As Color
