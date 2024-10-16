@@ -11,6 +11,10 @@ Public Class EtchASketchForm
     Dim backGroundColor As Color
     Dim foregroundColor As Color
     Dim PenSize As Integer
+    Dim xValue As Integer
+    Dim yValue As Integer
+    Dim oldXValue As Integer
+    Dim oldYValue As Integer
 
     '*******************Custom Methods*****************************
     ''' <summary>
@@ -26,6 +30,9 @@ Public Class EtchASketchForm
         ChangeColor(backGroundColor, False)
         'Set default pen size
         Me.PenSize = 2
+        'Set Drawing Cursor to Center Screen
+        oldXValue = DrawingPictureBox.Width / 2
+        oldYValue = DrawingPictureBox.Height / 2
     End Sub
 
     ''' <summary>
@@ -83,7 +90,21 @@ Public Class EtchASketchForm
         g.Dispose()
     End Sub
 
+    Sub TrackBarDraw()
+        xValue = (DrawingPictureBox.Width / 10) * XAxisTrackBar.Value
+        yValue = (DrawingPictureBox.Height / 10) * YAxisTrackBar.Value
+
+        DrawLine(oldXValue, oldYValue, xValue, yValue)
+
+        oldXValue = xValue
+        oldYValue = yValue
+    End Sub
+
     '********************Event Handlers******************************
+    Private Sub EtchASketchForm_Load(sender As Object, e As EventArgs) Handles Me.Load
+        SetDefaults()
+    End Sub
+
     Private Sub QuitButton_Click(sender As Object, e As EventArgs) Handles QuitButton.Click
         Me.Close()
     End Sub
@@ -93,5 +114,13 @@ Public Class EtchASketchForm
         DrawingPictureBox.Refresh()
         'Shake the screen up and down
         ShakeScreen()
+    End Sub
+
+    Private Sub XAxisTrackBar_ValueChanged(sender As Object, e As EventArgs) Handles XAxisTrackBar.ValueChanged
+        TrackBarDraw()
+    End Sub
+
+    Private Sub YAxisTrackBar_ValueChanged(sender As Object, e As EventArgs) Handles YAxisTrackBar.ValueChanged
+        TrackBarDraw()
     End Sub
 End Class
