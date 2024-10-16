@@ -147,4 +147,15 @@ Public Class EtchASketchForm
         XAxisTrackBar.Enabled = True
         YAxisTrackBar.Enabled = True
     End Sub
+
+    Private Sub DrawingPictureBox_SizeChanged(sender As Object, e As EventArgs) Handles DrawingPictureBox.SizeChanged
+        'Erase the current drawings
+        DrawingPictureBox.Refresh()
+        'Set Cursor to New Center
+        oldXValue = DrawingPictureBox.Width / 2
+        oldYValue = DrawingPictureBox.Height / 2
+        'Move Sliders to Center Screen
+        XAxisTrackBar.Value = 5
+        YAxisTrackBar.Value = 5
+    End Sub
 End Class
