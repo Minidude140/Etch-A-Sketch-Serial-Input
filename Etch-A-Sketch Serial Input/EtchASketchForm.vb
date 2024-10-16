@@ -137,4 +137,14 @@ Public Class EtchASketchForm
         'Draw Line To New Points
         DrawFromValue(xValue, yValue, 10)
     End Sub
+
+    Private Sub SerialInpurRadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles SerialInpurRadioButton.CheckedChanged
+        XAxisTrackBar.Enabled = False
+        YAxisTrackBar.Enabled = False
+    End Sub
+
+    Private Sub SliderInputRadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles SliderInputRadioButton.CheckedChanged
+        XAxisTrackBar.Enabled = True
+        YAxisTrackBar.Enabled = True
+    End Sub
 End Class

@@ -38,6 +38,7 @@ Partial Class EtchASketchForm
         '
         'QuitButton
         '
+        Me.QuitButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.QuitButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.QuitButton.Location = New System.Drawing.Point(745, 492)
         Me.QuitButton.Name = "QuitButton"
@@ -48,6 +49,7 @@ Partial Class EtchASketchForm
         '
         'EraseButton
         '
+        Me.EraseButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.EraseButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.EraseButton.Location = New System.Drawing.Point(540, 492)
         Me.EraseButton.Name = "EraseButton"
@@ -58,6 +60,9 @@ Partial Class EtchASketchForm
         '
         'DrawingPictureBox
         '
+        Me.DrawingPictureBox.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DrawingPictureBox.BackColor = System.Drawing.Color.BlanchedAlmond
         Me.DrawingPictureBox.Location = New System.Drawing.Point(12, 42)
         Me.DrawingPictureBox.Name = "DrawingPictureBox"
@@ -67,6 +72,7 @@ Partial Class EtchASketchForm
         '
         'SerialInpurRadioButton
         '
+        Me.SerialInpurRadioButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.SerialInpurRadioButton.AutoSize = True
         Me.SerialInpurRadioButton.Location = New System.Drawing.Point(411, 492)
         Me.SerialInpurRadioButton.Name = "SerialInpurRadioButton"
@@ -78,6 +84,7 @@ Partial Class EtchASketchForm
         '
         'SliderInputRadioButton
         '
+        Me.SliderInputRadioButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.SliderInputRadioButton.AutoSize = True
         Me.SliderInputRadioButton.Location = New System.Drawing.Point(411, 527)
         Me.SliderInputRadioButton.Name = "SliderInputRadioButton"
@@ -89,6 +96,7 @@ Partial Class EtchASketchForm
         '
         'XAxisTrackBar
         '
+        Me.XAxisTrackBar.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.XAxisTrackBar.BackColor = System.Drawing.SystemColors.ControlLight
         Me.XAxisTrackBar.Location = New System.Drawing.Point(107, 459)
         Me.XAxisTrackBar.Name = "XAxisTrackBar"
@@ -99,6 +107,7 @@ Partial Class EtchASketchForm
         '
         'YAxisTrackBar
         '
+        Me.YAxisTrackBar.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.YAxisTrackBar.BackColor = System.Drawing.SystemColors.ControlLight
         Me.YAxisTrackBar.Location = New System.Drawing.Point(107, 521)
         Me.YAxisTrackBar.Name = "YAxisTrackBar"
@@ -108,6 +117,7 @@ Partial Class EtchASketchForm
         '
         'XAxisSliderLabel
         '
+        Me.XAxisSliderLabel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.XAxisSliderLabel.AutoSize = True
         Me.XAxisSliderLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.XAxisSliderLabel.Location = New System.Drawing.Point(32, 472)
@@ -118,6 +128,7 @@ Partial Class EtchASketchForm
         '
         'YAxisSliderLabel
         '
+        Me.YAxisSliderLabel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.YAxisSliderLabel.AutoSize = True
         Me.YAxisSliderLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.YAxisSliderLabel.Location = New System.Drawing.Point(32, 523)
