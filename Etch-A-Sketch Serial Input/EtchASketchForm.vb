@@ -90,14 +90,20 @@ Public Class EtchASketchForm
         g.Dispose()
     End Sub
 
-    Sub TrackBarDraw()
-        xValue = (DrawingPictureBox.Width / 10) * XAxisTrackBar.Value
-        yValue = (DrawingPictureBox.Height / 10) * YAxisTrackBar.Value
-
-        DrawLine(oldXValue, oldYValue, xValue, yValue)
-
-        oldXValue = xValue
-        oldYValue = yValue
+    ''' <summary>
+    ''' Scale Input to Picture box and Draw Line From Old Point (Store Globally) to Given New Point
+    ''' </summary>
+    ''' <param name="x"></param>
+    ''' <param name="y"></param>
+    Sub DrawFromValue(x As Integer, y As Integer, maxInput As Integer)
+        'Scale Input Value to Picture Box Height and Width
+        x = (DrawingPictureBox.Width / maxInput) * x
+        y = (DrawingPictureBox.Height / maxInput) * y
+        'Draw Line From Old Position to Current Position
+        DrawLine(oldXValue, oldYValue, x, y)
+        'Store Current Position as Old Position
+        oldXValue = x
+        oldYValue = y
     End Sub
 
     '********************Event Handlers******************************
@@ -117,10 +123,14 @@ Public Class EtchASketchForm
     End Sub
 
     Private Sub XAxisTrackBar_ValueChanged(sender As Object, e As EventArgs) Handles XAxisTrackBar.ValueChanged
-        TrackBarDraw()
+        xValue = (250 / 10) * XAxisTrackBar.Value
+        yValue = (250 / 10) * YAxisTrackBar.Value
+        DrawFromValue(xValue, yValue, 250)
     End Sub
 
     Private Sub YAxisTrackBar_ValueChanged(sender As Object, e As EventArgs) Handles YAxisTrackBar.ValueChanged
-        TrackBarDraw()
+        xValue = (250 / 10) * XAxisTrackBar.Value
+        yValue = (250 / 10) * YAxisTrackBar.Value
+        DrawFromValue(xValue, yValue, 250)
     End Sub
 End Class

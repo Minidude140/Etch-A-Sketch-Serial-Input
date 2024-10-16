@@ -94,6 +94,7 @@ Partial Class EtchASketchForm
         Me.XAxisTrackBar.Name = "XAxisTrackBar"
         Me.XAxisTrackBar.Size = New System.Drawing.Size(286, 56)
         Me.XAxisTrackBar.TabIndex = 5
+        Me.XAxisTrackBar.TickFrequency = 250
         '
         'YAxisTrackBar
         '
