@@ -35,9 +35,8 @@ Public Class EtchASketchForm
         ChangeColor(backGroundColor, False)
         'Set default pen size
         Me.PenSize = 2
-        'Set Drawing Cursor to Center Screen
-        oldXValue = DrawingPictureBox.Width / 2
-        oldYValue = DrawingPictureBox.Height / 2
+        'Rescale old Value X and Y to Screen size
+        DrawFromValue(XAxisTrackBar.Value, YAxisTrackBar.Value, XAxisTrackBar.Maximum)
         'Start In Slider Input Mode
         SliderInputRadioButton.Checked = True
     End Sub
@@ -134,7 +133,7 @@ Public Class EtchASketchForm
         xValue = XAxisTrackBar.Value
         yValue = YAxisTrackBar.Value
         'Draw Line To New Points
-        DrawFromValue(xValue, yValue, 10)
+        DrawFromValue(xValue, yValue, 255)
     End Sub
 
     Private Sub YAxisTrackBar_ValueChanged(sender As Object, e As EventArgs) Handles YAxisTrackBar.ValueChanged
@@ -142,7 +141,7 @@ Public Class EtchASketchForm
         xValue = XAxisTrackBar.Value
         yValue = YAxisTrackBar.Value
         'Draw Line To New Points
-        DrawFromValue(xValue, yValue, 10)
+        DrawFromValue(xValue, yValue, 255)
     End Sub
 
     Private Sub SerialInpurRadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles SerialInpurRadioButton.CheckedChanged
@@ -158,11 +157,7 @@ Public Class EtchASketchForm
     Private Sub DrawingPictureBox_SizeChanged(sender As Object, e As EventArgs) Handles DrawingPictureBox.SizeChanged
         'Erase the current drawings
         DrawingPictureBox.Refresh()
-        'Set Cursor to New Center
-        oldXValue = DrawingPictureBox.Width / 2
-        oldYValue = DrawingPictureBox.Height / 2
-        'Move Sliders to Center Screen
-        XAxisTrackBar.Value = 5
-        YAxisTrackBar.Value = 5
+        'mainly to rescale old x and Y (not draw diagonal line after resize)
+        SetDefaults()
     End Sub
 End Class

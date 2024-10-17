@@ -22,6 +22,7 @@ Partial Class EtchASketchForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.QuitButton = New System.Windows.Forms.Button()
         Me.EraseButton = New System.Windows.Forms.Button()
         Me.DrawingPictureBox = New System.Windows.Forms.PictureBox()
@@ -31,6 +32,7 @@ Partial Class EtchASketchForm
         Me.YAxisTrackBar = New System.Windows.Forms.TrackBar()
         Me.XAxisSliderLabel = New System.Windows.Forms.Label()
         Me.YAxisSliderLabel = New System.Windows.Forms.Label()
+        Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         CType(Me.DrawingPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.XAxisTrackBar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.YAxisTrackBar, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -99,21 +101,23 @@ Partial Class EtchASketchForm
         Me.XAxisTrackBar.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.XAxisTrackBar.BackColor = System.Drawing.SystemColors.ControlLight
         Me.XAxisTrackBar.Location = New System.Drawing.Point(107, 472)
+        Me.XAxisTrackBar.Maximum = 255
         Me.XAxisTrackBar.Name = "XAxisTrackBar"
         Me.XAxisTrackBar.Size = New System.Drawing.Size(286, 56)
         Me.XAxisTrackBar.TabIndex = 5
         Me.XAxisTrackBar.TickFrequency = 250
-        Me.XAxisTrackBar.Value = 5
+        Me.XAxisTrackBar.Value = 128
         '
         'YAxisTrackBar
         '
         Me.YAxisTrackBar.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.YAxisTrackBar.BackColor = System.Drawing.SystemColors.ControlLight
         Me.YAxisTrackBar.Location = New System.Drawing.Point(107, 534)
+        Me.YAxisTrackBar.Maximum = 255
         Me.YAxisTrackBar.Name = "YAxisTrackBar"
         Me.YAxisTrackBar.Size = New System.Drawing.Size(286, 56)
         Me.YAxisTrackBar.TabIndex = 6
-        Me.YAxisTrackBar.Value = 5
+        Me.YAxisTrackBar.Value = 128
         '
         'XAxisSliderLabel
         '
@@ -171,4 +175,5 @@ Partial Class EtchASketchForm
     Friend WithEvents YAxisTrackBar As TrackBar
     Friend WithEvents XAxisSliderLabel As Label
     Friend WithEvents YAxisSliderLabel As Label
+    Friend WithEvents ToolTip1 As ToolTip
 End Class
