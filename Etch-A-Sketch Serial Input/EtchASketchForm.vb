@@ -12,6 +12,8 @@
 '[]Input Serial Data and Draw with it
 '[]Try Catch Serial input failures
 
+Imports System.Threading
+
 Public Class EtchASketchForm
     Dim backGroundColor As Color
     Dim foregroundColor As Color
@@ -112,6 +114,52 @@ Public Class EtchASketchForm
         oldYValue = y
     End Sub
 
+    ''' <summary>
+    ''' Opens Serial Port "COM5" at Set 9600 Baud
+    ''' </summary>
+    Sub OpenComPort()
+        'Set up port name and baud rate
+        SerialPort1.PortName = "COM5"
+        SerialPort1.BaudRate = 9600
+        'open serial port for data transfer
+        SerialPort1.Open()
+    End Sub
+
+    ''' <summary>
+    ''' Read Analog Input 1 and Return High MSB Byte
+    ''' </summary>
+    Function Qy_AnalogReadA1() As Integer
+        'command to QY board to read analog data
+        Dim command(0) As Byte
+        command(0) = &B1010001
+        SerialPort1.Write(command, 0, 1)
+        'Wait for Response
+        Thread.Sleep(5)
+        'create an array of bytes with the length of input data
+        Dim data(SerialPort1.BytesToRead) As Byte
+        'Populate array with input data
+        SerialPort1.Read(data, 0, SerialPort1.BytesToRead)
+        'Return the first Byte (MSB) 
+        Return data(0)
+    End Function
+
+    ''' <summary>
+    ''' Read Analog Input 2 and Return High MSB Byte
+    ''' </summary>
+    Function Qy_AnalogReadA2() As Integer
+        'command to QY board to read analog data
+        Dim command(0) As Byte
+        command(0) = &B1010010
+        SerialPort1.Write(command, 0, 1)
+        'Wait for Response
+        Thread.Sleep(5)
+        'create an array of bytes with the length of input data
+        Dim data(SerialPort1.BytesToRead) As Byte
+        'Populate array with input data
+        SerialPort1.Read(data, 0, SerialPort1.BytesToRead)
+        'Return the first Byte (MSB) 
+        Return data(0)
+    End Function
     '********************Event Handlers******************************
     Private Sub EtchASketchForm_Load(sender As Object, e As EventArgs) Handles Me.Load
         SetDefaults()
@@ -144,14 +192,32 @@ Public Class EtchASketchForm
         DrawFromValue(xValue, yValue, 255)
     End Sub
 
-    Private Sub SerialInpurRadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles SerialInpurRadioButton.CheckedChanged
-        XAxisTrackBar.Enabled = False
-        YAxisTrackBar.Enabled = False
-    End Sub
-
     Private Sub SliderInputRadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles SliderInputRadioButton.CheckedChanged
+        'Disable Com Port Timer
+        SerialInputTimer.Enabled = False
+        'Close Com Port
+        SerialPort1.Close()
+        'Enable TrackBar Input Sliders
         XAxisTrackBar.Enabled = True
         YAxisTrackBar.Enabled = True
+    End Sub
+
+    Private Sub SerialInputRadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles SerialInputRadioButton.CheckedChanged
+        'Disable TrackBar Input Sliders
+        XAxisTrackBar.Enabled = False
+        YAxisTrackBar.Enabled = False
+        'Open Com Port
+        OpenComPort()
+        'Enable Com Port Timer
+        SerialInputTimer.Enabled = True
+    End Sub
+
+    Private Sub SerialInputTimer_Tick(sender As Object, e As EventArgs) Handles SerialInputTimer.Tick
+        'Read Com Input Here
+        xValue = Qy_AnalogReadA1()
+        yValue = Qy_AnalogReadA2()
+        'Draw Line From New Input
+        DrawFromValue(xValue, yValue, 250)
     End Sub
 
     Private Sub DrawingPictureBox_SizeChanged(sender As Object, e As EventArgs) Handles DrawingPictureBox.SizeChanged
@@ -160,4 +226,5 @@ Public Class EtchASketchForm
         'mainly to rescale old x and Y (not draw diagonal line after resize)
         SetDefaults()
     End Sub
+
 End Class

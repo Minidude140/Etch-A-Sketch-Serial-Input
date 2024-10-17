@@ -26,13 +26,14 @@ Partial Class EtchASketchForm
         Me.QuitButton = New System.Windows.Forms.Button()
         Me.EraseButton = New System.Windows.Forms.Button()
         Me.DrawingPictureBox = New System.Windows.Forms.PictureBox()
-        Me.SerialInpurRadioButton = New System.Windows.Forms.RadioButton()
+        Me.SerialInputRadioButton = New System.Windows.Forms.RadioButton()
         Me.SliderInputRadioButton = New System.Windows.Forms.RadioButton()
         Me.XAxisTrackBar = New System.Windows.Forms.TrackBar()
         Me.YAxisTrackBar = New System.Windows.Forms.TrackBar()
         Me.XAxisSliderLabel = New System.Windows.Forms.Label()
         Me.YAxisSliderLabel = New System.Windows.Forms.Label()
-        Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.SerialInputTimer = New System.Windows.Forms.Timer(Me.components)
+        Me.SerialPort1 = New System.IO.Ports.SerialPort(Me.components)
         CType(Me.DrawingPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.XAxisTrackBar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.YAxisTrackBar, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -42,7 +43,7 @@ Partial Class EtchASketchForm
         '
         Me.QuitButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.QuitButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.QuitButton.Location = New System.Drawing.Point(745, 505)
+        Me.QuitButton.Location = New System.Drawing.Point(745, 498)
         Me.QuitButton.Name = "QuitButton"
         Me.QuitButton.Size = New System.Drawing.Size(183, 66)
         Me.QuitButton.TabIndex = 0
@@ -53,7 +54,7 @@ Partial Class EtchASketchForm
         '
         Me.EraseButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.EraseButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.EraseButton.Location = New System.Drawing.Point(540, 505)
+        Me.EraseButton.Location = New System.Drawing.Point(540, 498)
         Me.EraseButton.Name = "EraseButton"
         Me.EraseButton.Size = New System.Drawing.Size(183, 66)
         Me.EraseButton.TabIndex = 1
@@ -72,23 +73,23 @@ Partial Class EtchASketchForm
         Me.DrawingPictureBox.TabIndex = 2
         Me.DrawingPictureBox.TabStop = False
         '
-        'SerialInpurRadioButton
+        'SerialInputRadioButton
         '
-        Me.SerialInpurRadioButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.SerialInpurRadioButton.AutoSize = True
-        Me.SerialInpurRadioButton.Location = New System.Drawing.Point(411, 505)
-        Me.SerialInpurRadioButton.Name = "SerialInpurRadioButton"
-        Me.SerialInpurRadioButton.Size = New System.Drawing.Size(100, 21)
-        Me.SerialInpurRadioButton.TabIndex = 3
-        Me.SerialInpurRadioButton.TabStop = True
-        Me.SerialInpurRadioButton.Text = "Serial Input"
-        Me.SerialInpurRadioButton.UseVisualStyleBackColor = True
+        Me.SerialInputRadioButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.SerialInputRadioButton.AutoSize = True
+        Me.SerialInputRadioButton.Location = New System.Drawing.Point(411, 498)
+        Me.SerialInputRadioButton.Name = "SerialInputRadioButton"
+        Me.SerialInputRadioButton.Size = New System.Drawing.Size(100, 21)
+        Me.SerialInputRadioButton.TabIndex = 3
+        Me.SerialInputRadioButton.TabStop = True
+        Me.SerialInputRadioButton.Text = "Serial Input"
+        Me.SerialInputRadioButton.UseVisualStyleBackColor = True
         '
         'SliderInputRadioButton
         '
         Me.SliderInputRadioButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.SliderInputRadioButton.AutoSize = True
-        Me.SliderInputRadioButton.Location = New System.Drawing.Point(411, 540)
+        Me.SliderInputRadioButton.Location = New System.Drawing.Point(411, 533)
         Me.SliderInputRadioButton.Name = "SliderInputRadioButton"
         Me.SliderInputRadioButton.Size = New System.Drawing.Size(100, 21)
         Me.SliderInputRadioButton.TabIndex = 4
@@ -141,6 +142,9 @@ Partial Class EtchASketchForm
         Me.YAxisSliderLabel.TabIndex = 8
         Me.YAxisSliderLabel.Text = "Y Axis"
         '
+        'SerialInputTimer
+        '
+        '
         'EtchASketchForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -151,7 +155,7 @@ Partial Class EtchASketchForm
         Me.Controls.Add(Me.YAxisTrackBar)
         Me.Controls.Add(Me.XAxisTrackBar)
         Me.Controls.Add(Me.SliderInputRadioButton)
-        Me.Controls.Add(Me.SerialInpurRadioButton)
+        Me.Controls.Add(Me.SerialInputRadioButton)
         Me.Controls.Add(Me.DrawingPictureBox)
         Me.Controls.Add(Me.EraseButton)
         Me.Controls.Add(Me.QuitButton)
@@ -169,11 +173,12 @@ Partial Class EtchASketchForm
     Friend WithEvents QuitButton As Button
     Friend WithEvents EraseButton As Button
     Friend WithEvents DrawingPictureBox As PictureBox
-    Friend WithEvents SerialInpurRadioButton As RadioButton
+    Friend WithEvents SerialInputRadioButton As RadioButton
     Friend WithEvents SliderInputRadioButton As RadioButton
     Friend WithEvents XAxisTrackBar As TrackBar
     Friend WithEvents YAxisTrackBar As TrackBar
     Friend WithEvents XAxisSliderLabel As Label
     Friend WithEvents YAxisSliderLabel As Label
-    Friend WithEvents ToolTip1 As ToolTip
+    Friend WithEvents SerialInputTimer As Timer
+    Friend WithEvents SerialPort1 As IO.Ports.SerialPort
 End Class
