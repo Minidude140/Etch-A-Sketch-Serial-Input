@@ -34,9 +34,12 @@ Partial Class EtchASketchForm
         Me.YAxisSliderLabel = New System.Windows.Forms.Label()
         Me.SerialInputTimer = New System.Windows.Forms.Timer(Me.components)
         Me.SerialPort1 = New System.IO.Ports.SerialPort(Me.components)
+        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
+        Me.ComSelectComboBox = New System.Windows.Forms.ToolStripComboBox()
         CType(Me.DrawingPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.XAxisTrackBar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.YAxisTrackBar, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'QuitButton
@@ -147,11 +150,27 @@ Partial Class EtchASketchForm
         'SerialInputTimer
         '
         '
+        'ToolStrip1
+        '
+        Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ComSelectComboBox})
+        Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.ToolStrip1.Name = "ToolStrip1"
+        Me.ToolStrip1.Size = New System.Drawing.Size(954, 28)
+        Me.ToolStrip1.TabIndex = 9
+        Me.ToolStrip1.Text = "ToolStrip1"
+        '
+        'ComSelectComboBox
+        '
+        Me.ComSelectComboBox.Name = "ComSelectComboBox"
+        Me.ComSelectComboBox.Size = New System.Drawing.Size(121, 28)
+        '
         'EtchASketchForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(954, 592)
+        Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.YAxisSliderLabel)
         Me.Controls.Add(Me.XAxisSliderLabel)
         Me.Controls.Add(Me.YAxisTrackBar)
@@ -167,6 +186,8 @@ Partial Class EtchASketchForm
         CType(Me.DrawingPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.XAxisTrackBar, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.YAxisTrackBar, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ToolStrip1.ResumeLayout(False)
+        Me.ToolStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -183,4 +204,6 @@ Partial Class EtchASketchForm
     Friend WithEvents YAxisSliderLabel As Label
     Friend WithEvents SerialInputTimer As Timer
     Friend WithEvents SerialPort1 As IO.Ports.SerialPort
+    Friend WithEvents ToolStrip1 As ToolStrip
+    Friend WithEvents ComSelectComboBox As ToolStripComboBox
 End Class

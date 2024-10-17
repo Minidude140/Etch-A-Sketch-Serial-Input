@@ -117,7 +117,7 @@ Public Class EtchASketchForm
     ''' </summary>
     Sub OpenComPort()
         'Set up port name and baud rate
-        SerialPort1.PortName = "COM5"
+        SerialPort1.PortName = ComSelectComboBox.SelectedItem
         SerialPort1.BaudRate = 9600
         'open serial port for data transfer
         SerialPort1.Open()
@@ -159,11 +159,21 @@ Public Class EtchASketchForm
         Return data(0)
     End Function
 
+    ''' <summary>
+    ''' Populates Combo Box With Available Com Ports
+    ''' </summary>
+    Sub GetComPorts()
+        For Each portName In SerialPort1.GetPortNames
+            ComSelectComboBox.Items.Add(portName)
+        Next
+    End Sub
+
     '********************Event Handlers******************************
     Private Sub EtchASketchForm_Load(sender As Object, e As EventArgs) Handles Me.Load
         SetDefaults()
         'Start In Slider Input Mode
         SliderInputRadioButton.Checked = True
+        GetComPorts()
     End Sub
 
     Private Sub QuitButton_Click(sender As Object, e As EventArgs) Handles QuitButton.Click
@@ -194,7 +204,7 @@ Public Class EtchASketchForm
     End Sub
 
     Private Sub SliderInputRadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles SliderInputRadioButton.CheckedChanged
-        'ony preform this when slider input button is checked
+        'only preform this when slider input button is checked
         If SliderInputRadioButton.Checked = True Then
             'Disable Com Port Timer
             SerialInputTimer.Enabled = False
