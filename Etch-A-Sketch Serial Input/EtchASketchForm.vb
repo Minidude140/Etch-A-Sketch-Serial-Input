@@ -164,15 +164,50 @@ Public Class EtchASketchForm
     ''' </summary>
     Sub GetComPorts()
         For Each portName In SerialPort1.GetPortNames
-            ComSelectComboBox.Items.Add(portName)
+            Try
+                SerialPort1.Close()
+                SerialPort1.PortName = portName
+                SerialPort1.BaudRate = 9600
+                SerialPort1.Open()
+                If GetQySettings() = True Then
+                    ComSelectComboBox.Items.Add(portName)
+                End If
+                SerialPort1.Close()
+            Catch
+                SerialPort1.Close()
+            End Try
         Next
+
+
     End Sub
+
+    Function GetQySettings() As Boolean
+        Dim isQY As Boolean = False
+        'command QY Board to output settings data
+        Dim command(0) As Byte
+        command(0) = &B11110000
+        SerialPort1.Write(command, 0, 1)
+        'Wait for Response
+        Thread.Sleep(5)
+        'create an array of bytes with the length of given bytes
+        Dim data(SerialPort1.BytesToRead) As Byte
+        'populates data with incoming port data starting at 0 bit and reading the full bytes
+        SerialPort1.Read(data, 0, SerialPort1.BytesToRead)
+        'loops through the data array and writes each item to console (converts to hex)
+        If data.Length < 61 Then
+            'do nothing
+        ElseIf data(58) = 81 And data(59) = 121 And data(60) = 64 Then
+            isQY = True
+        End If
+        Return isQY
+    End Function
 
     '********************Event Handlers******************************
     Private Sub EtchASketchForm_Load(sender As Object, e As EventArgs) Handles Me.Load
         SetDefaults()
         'Start In Slider Input Mode
         SliderInputRadioButton.Checked = True
+        'Fill Combo Box with Port Names
         GetComPorts()
     End Sub
 

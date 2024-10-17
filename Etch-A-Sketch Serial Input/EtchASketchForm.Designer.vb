@@ -150,6 +150,11 @@ Partial Class EtchASketchForm
         'SerialInputTimer
         '
         '
+        'SerialPort1
+        '
+        Me.SerialPort1.ReadTimeout = 100
+        Me.SerialPort1.WriteTimeout = 100
+        '
         'ToolStrip1
         '
         Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
