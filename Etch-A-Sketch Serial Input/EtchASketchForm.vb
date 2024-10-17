@@ -11,6 +11,8 @@
 '[]When Serial Input is Selected Prompt user for Com input
 '[]Input Serial Data and Draw with it
 '[]Try Catch Serial input failures
+'[]Move X Slider with left right arrow Keys
+'[]Move Y Slider with up down arrow keys
 
 Imports System.Threading
 
