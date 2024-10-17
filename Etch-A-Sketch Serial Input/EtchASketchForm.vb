@@ -9,7 +9,7 @@
 '[]Add Tool Strip For Color Change and Pen Size
 '[]Add Menu Strip and about form
 '[]When Serial Input is Selected Prompt user for Com input
-'[]Input Serial Data and Draw with it
+'[*]Input Serial Data and Draw with it
 '[]Try Catch Serial input failures
 '[]Move X Slider with left right arrow Keys
 '[]Move Y Slider with up down arrow keys
@@ -30,8 +30,6 @@ Public Class EtchASketchForm
     ''' Sets the Default Colors and clears picture box
     ''' </summary>
     Sub SetDefaults()
-        'Erase the screen
-        DrawingPictureBox.Refresh()
         'Change pen color to black
         Me.foregroundColor = Color.Black
         'Change background color to "Blanched Almond"
@@ -39,10 +37,8 @@ Public Class EtchASketchForm
         ChangeColor(backGroundColor, False)
         'Set default pen size
         Me.PenSize = 2
-        'Rescale old Value X and Y to Screen size
-        DrawFromValue(XAxisTrackBar.Value, YAxisTrackBar.Value, XAxisTrackBar.Maximum)
-        'Start In Slider Input Mode
-        SliderInputRadioButton.Checked = True
+        'Erase the screen
+        DrawingPictureBox.Refresh()
     End Sub
 
     ''' <summary>
@@ -166,6 +162,8 @@ Public Class EtchASketchForm
     '********************Event Handlers******************************
     Private Sub EtchASketchForm_Load(sender As Object, e As EventArgs) Handles Me.Load
         SetDefaults()
+        'Start In Slider Input Mode
+        SliderInputRadioButton.Checked = True
     End Sub
 
     Private Sub QuitButton_Click(sender As Object, e As EventArgs) Handles QuitButton.Click
@@ -196,23 +194,34 @@ Public Class EtchASketchForm
     End Sub
 
     Private Sub SliderInputRadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles SliderInputRadioButton.CheckedChanged
-        'Disable Com Port Timer
-        SerialInputTimer.Enabled = False
-        'Close Com Port
-        SerialPort1.Close()
-        'Enable TrackBar Input Sliders
-        XAxisTrackBar.Enabled = True
-        YAxisTrackBar.Enabled = True
+        'ony preform this when slider input button is checked
+        If SliderInputRadioButton.Checked = True Then
+            'Disable Com Port Timer
+            SerialInputTimer.Enabled = False
+            'Close Com Port
+            SerialPort1.Close()
+            'Enable TrackBar Input Sliders
+            XAxisTrackBar.Enabled = True
+            YAxisTrackBar.Enabled = True
+        End If
     End Sub
 
     Private Sub SerialInputRadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles SerialInputRadioButton.CheckedChanged
-        'Disable TrackBar Input Sliders
-        XAxisTrackBar.Enabled = False
-        YAxisTrackBar.Enabled = False
-        'Open Com Port
-        OpenComPort()
-        'Enable Com Port Timer
-        SerialInputTimer.Enabled = True
+        'Only Preform This when serial input button is checked
+        If SerialInputRadioButton.Checked = True Then
+            'Disable TrackBar Input Sliders
+            XAxisTrackBar.Enabled = False
+            YAxisTrackBar.Enabled = False
+            'Open Com Port
+            OpenComPort()
+            'Enable Com Port Timer
+            SerialInputTimer.Enabled = True
+            'Reset Cursor to Current Analog input
+            oldXValue = Qy_AnalogReadA1()
+            oldYValue = Qy_AnalogReadA2()
+            'Rescale Old value X and Y to Screen Size (from analog input)
+            DrawFromValue(oldXValue, oldYValue, 250)
+        End If
     End Sub
 
     Private Sub SerialInputTimer_Tick(sender As Object, e As EventArgs) Handles SerialInputTimer.Tick
@@ -226,8 +235,13 @@ Public Class EtchASketchForm
     Private Sub DrawingPictureBox_SizeChanged(sender As Object, e As EventArgs) Handles DrawingPictureBox.SizeChanged
         'Erase the current drawings
         DrawingPictureBox.Refresh()
-        'mainly to rescale old x and Y (not draw diagonal line after resize)
-        SetDefaults()
+        If SliderInputRadioButton.Checked = True Then
+            'Rescale old Value X and Y to Screen size (from Slider input)
+            DrawFromValue(XAxisTrackBar.Value, YAxisTrackBar.Value, XAxisTrackBar.Maximum)
+        ElseIf SerialInputRadioButton.Checked = True Then
+            'Rescale Old value X and Y to Screen Size (from analog input)
+            DrawFromValue(Qy_AnalogReadA1(), Qy_AnalogReadA2, 250)
+        End If
     End Sub
 
 End Class
