@@ -160,6 +160,7 @@ Public Class EtchASketchForm
         'Return the first Byte (MSB) 
         Return data(0)
     End Function
+
     '********************Event Handlers******************************
     Private Sub EtchASketchForm_Load(sender As Object, e As EventArgs) Handles Me.Load
         SetDefaults()

@@ -47,7 +47,8 @@ Partial Class EtchASketchForm
         Me.QuitButton.Name = "QuitButton"
         Me.QuitButton.Size = New System.Drawing.Size(183, 66)
         Me.QuitButton.TabIndex = 0
-        Me.QuitButton.Text = "Quit"
+        Me.QuitButton.TabStop = False
+        Me.QuitButton.Text = "&Quit"
         Me.QuitButton.UseVisualStyleBackColor = True
         '
         'EraseButton
@@ -57,8 +58,8 @@ Partial Class EtchASketchForm
         Me.EraseButton.Location = New System.Drawing.Point(540, 498)
         Me.EraseButton.Name = "EraseButton"
         Me.EraseButton.Size = New System.Drawing.Size(183, 66)
-        Me.EraseButton.TabIndex = 1
-        Me.EraseButton.Text = "Erase"
+        Me.EraseButton.TabIndex = 2
+        Me.EraseButton.Text = "&Erase"
         Me.EraseButton.UseVisualStyleBackColor = True
         '
         'DrawingPictureBox
@@ -81,7 +82,6 @@ Partial Class EtchASketchForm
         Me.SerialInputRadioButton.Name = "SerialInputRadioButton"
         Me.SerialInputRadioButton.Size = New System.Drawing.Size(100, 21)
         Me.SerialInputRadioButton.TabIndex = 3
-        Me.SerialInputRadioButton.TabStop = True
         Me.SerialInputRadioButton.Text = "Serial Input"
         Me.SerialInputRadioButton.UseVisualStyleBackColor = True
         '
@@ -93,7 +93,6 @@ Partial Class EtchASketchForm
         Me.SliderInputRadioButton.Name = "SliderInputRadioButton"
         Me.SliderInputRadioButton.Size = New System.Drawing.Size(100, 21)
         Me.SliderInputRadioButton.TabIndex = 4
-        Me.SliderInputRadioButton.TabStop = True
         Me.SliderInputRadioButton.Text = "Slider Input"
         Me.SliderInputRadioButton.UseVisualStyleBackColor = True
         '
@@ -105,7 +104,7 @@ Partial Class EtchASketchForm
         Me.XAxisTrackBar.Maximum = 255
         Me.XAxisTrackBar.Name = "XAxisTrackBar"
         Me.XAxisTrackBar.Size = New System.Drawing.Size(286, 56)
-        Me.XAxisTrackBar.TabIndex = 5
+        Me.XAxisTrackBar.TabIndex = 0
         Me.XAxisTrackBar.TickFrequency = 250
         Me.XAxisTrackBar.Value = 128
         '
@@ -117,7 +116,7 @@ Partial Class EtchASketchForm
         Me.YAxisTrackBar.Maximum = 255
         Me.YAxisTrackBar.Name = "YAxisTrackBar"
         Me.YAxisTrackBar.Size = New System.Drawing.Size(286, 56)
-        Me.YAxisTrackBar.TabIndex = 6
+        Me.YAxisTrackBar.TabIndex = 1
         Me.YAxisTrackBar.Value = 128
         '
         'XAxisSliderLabel
