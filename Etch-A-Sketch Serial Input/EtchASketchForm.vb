@@ -10,7 +10,7 @@
 '[]Add Menu Strip and about form
 '[]When Serial Input is Selected Prompt user for Com input
 '[*]Input Serial Data and Draw with it
-'[]Try Catch Serial input failures
+'[]Test Com for QY Board when Com is Selected
 '[]Move X Slider with left right arrow Keys
 '[]Move Y Slider with up down arrow keys
 
@@ -164,23 +164,16 @@ Public Class EtchASketchForm
     ''' </summary>
     Sub GetComPorts()
         For Each portName In SerialPort1.GetPortNames
-            Try
-                SerialPort1.Close()
-                SerialPort1.PortName = portName
-                SerialPort1.BaudRate = 9600
-                SerialPort1.Open()
-                If GetQySettings() = True Then
-                    ComSelectComboBox.Items.Add(portName)
-                End If
-                SerialPort1.Close()
-            Catch
-                SerialPort1.Close()
-            End Try
+            'add available Com Ports to combo box
+            ComSelectComboBox.Items.Add(portName)
         Next
-
 
     End Sub
 
+    ''' <summary>
+    ''' Get Settings from Com Return True if Qy@ identifier is found
+    ''' </summary>
+    ''' <returns></returns>
     Function GetQySettings() As Boolean
         Dim isQY As Boolean = False
         'command QY Board to output settings data
@@ -257,15 +250,23 @@ Public Class EtchASketchForm
             'Disable TrackBar Input Sliders
             XAxisTrackBar.Enabled = False
             YAxisTrackBar.Enabled = False
-            'Open Com Port
-            OpenComPort()
-            'Enable Com Port Timer
-            SerialInputTimer.Enabled = True
-            'Reset Cursor to Current Analog input
-            oldXValue = Qy_AnalogReadA1()
-            oldYValue = Qy_AnalogReadA2()
-            'Rescale Old value X and Y to Screen Size (from analog input)
-            DrawFromValue(oldXValue, oldYValue, 250)
+            Try
+                'Open Com Port
+                OpenComPort()
+                'Enable Com Port Timer
+                SerialInputTimer.Enabled = True
+                'Reset Cursor to Current Analog input
+                oldXValue = Qy_AnalogReadA1()
+                oldYValue = Qy_AnalogReadA2()
+                'Rescale Old value X and Y to Screen Size (from analog input)
+                DrawFromValue(oldXValue, oldYValue, 250)
+            Catch
+                'Com not available Prompt User
+                MsgBox("Please Select a COM Port")
+                'Reset to SLider mode
+                SerialInputRadioButton.Checked = False
+                SliderInputRadioButton.Checked = True
+            End Try
         End If
     End Sub
 
