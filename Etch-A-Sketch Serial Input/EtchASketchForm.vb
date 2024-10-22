@@ -314,4 +314,12 @@ Public Class EtchASketchForm
             SerialPort1.Close()
         End If
     End Sub
+
+    Private Sub ToolStripChangePenSizeButton_Click(sender As Object, e As EventArgs) Handles ToolStripChangePenSizeButton.Click
+        If PenSize < 30 Then
+            PenSize = PenSize * 2
+        Else
+            PenSize = 2
+        End If
+    End Sub
 End Class

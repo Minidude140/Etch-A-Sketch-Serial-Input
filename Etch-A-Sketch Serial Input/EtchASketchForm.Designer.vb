@@ -23,6 +23,7 @@ Partial Class EtchASketchForm
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(EtchASketchForm))
         Me.QuitButton = New System.Windows.Forms.Button()
         Me.EraseButton = New System.Windows.Forms.Button()
         Me.DrawingPictureBox = New System.Windows.Forms.PictureBox()
@@ -36,6 +37,9 @@ Partial Class EtchASketchForm
         Me.SerialPort1 = New System.IO.Ports.SerialPort(Me.components)
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.ComSelectComboBox = New System.Windows.Forms.ToolStripComboBox()
+        Me.ToolStripChangePenColorButton = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripChangeBackColorButton = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripChangePenSizeButton = New System.Windows.Forms.ToolStripButton()
         CType(Me.DrawingPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.XAxisTrackBar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.YAxisTrackBar, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -158,7 +162,7 @@ Partial Class EtchASketchForm
         'ToolStrip1
         '
         Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ComSelectComboBox})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ComSelectComboBox, Me.ToolStripChangePenColorButton, Me.ToolStripChangeBackColorButton, Me.ToolStripChangePenSizeButton})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.Size = New System.Drawing.Size(954, 28)
@@ -169,6 +173,33 @@ Partial Class EtchASketchForm
         '
         Me.ComSelectComboBox.Name = "ComSelectComboBox"
         Me.ComSelectComboBox.Size = New System.Drawing.Size(121, 28)
+        '
+        'ToolStripChangePenColorButton
+        '
+        Me.ToolStripChangePenColorButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripChangePenColorButton.Image = CType(resources.GetObject("ToolStripChangePenColorButton.Image"), System.Drawing.Image)
+        Me.ToolStripChangePenColorButton.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripChangePenColorButton.Name = "ToolStripChangePenColorButton"
+        Me.ToolStripChangePenColorButton.Size = New System.Drawing.Size(29, 25)
+        Me.ToolStripChangePenColorButton.Text = "ToolStripButton1"
+        '
+        'ToolStripChangeBackColorButton
+        '
+        Me.ToolStripChangeBackColorButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripChangeBackColorButton.Image = CType(resources.GetObject("ToolStripChangeBackColorButton.Image"), System.Drawing.Image)
+        Me.ToolStripChangeBackColorButton.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripChangeBackColorButton.Name = "ToolStripChangeBackColorButton"
+        Me.ToolStripChangeBackColorButton.Size = New System.Drawing.Size(29, 25)
+        Me.ToolStripChangeBackColorButton.Text = "ToolStripButton2"
+        '
+        'ToolStripChangePenSizeButton
+        '
+        Me.ToolStripChangePenSizeButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripChangePenSizeButton.Image = CType(resources.GetObject("ToolStripChangePenSizeButton.Image"), System.Drawing.Image)
+        Me.ToolStripChangePenSizeButton.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripChangePenSizeButton.Name = "ToolStripChangePenSizeButton"
+        Me.ToolStripChangePenSizeButton.Size = New System.Drawing.Size(29, 25)
+        Me.ToolStripChangePenSizeButton.Text = "ToolStripButton1"
         '
         'EtchASketchForm
         '
@@ -212,4 +243,7 @@ Partial Class EtchASketchForm
     Friend WithEvents SerialPort1 As IO.Ports.SerialPort
     Friend WithEvents ToolStrip1 As ToolStrip
     Friend WithEvents ComSelectComboBox As ToolStripComboBox
+    Friend WithEvents ToolStripChangePenColorButton As ToolStripButton
+    Friend WithEvents ToolStripChangeBackColorButton As ToolStripButton
+    Friend WithEvents ToolStripChangePenSizeButton As ToolStripButton
 End Class
