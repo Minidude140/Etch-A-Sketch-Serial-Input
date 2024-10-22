@@ -56,6 +56,7 @@ Partial Class EtchASketchForm
         Me.QuitButton.TabIndex = 0
         Me.QuitButton.TabStop = False
         Me.QuitButton.Text = "&Quit"
+        Me.ToolTip1.SetToolTip(Me.QuitButton, "Exit The Program")
         Me.QuitButton.UseVisualStyleBackColor = True
         '
         'EraseButton
@@ -67,6 +68,7 @@ Partial Class EtchASketchForm
         Me.EraseButton.Size = New System.Drawing.Size(183, 66)
         Me.EraseButton.TabIndex = 2
         Me.EraseButton.Text = "&Erase"
+        Me.ToolTip1.SetToolTip(Me.EraseButton, "Erase Current Drawing")
         Me.EraseButton.UseVisualStyleBackColor = True
         '
         'SerialInputRadioButton
@@ -78,6 +80,7 @@ Partial Class EtchASketchForm
         Me.SerialInputRadioButton.Size = New System.Drawing.Size(100, 21)
         Me.SerialInputRadioButton.TabIndex = 3
         Me.SerialInputRadioButton.Text = "Serial Input"
+        Me.ToolTip1.SetToolTip(Me.SerialInputRadioButton, "Change to Serial Input Mode")
         Me.SerialInputRadioButton.UseVisualStyleBackColor = True
         '
         'SliderInputRadioButton
@@ -89,6 +92,7 @@ Partial Class EtchASketchForm
         Me.SliderInputRadioButton.Size = New System.Drawing.Size(100, 21)
         Me.SliderInputRadioButton.TabIndex = 4
         Me.SliderInputRadioButton.Text = "Slider Input"
+        Me.ToolTip1.SetToolTip(Me.SliderInputRadioButton, "Change To Slider Input Mode")
         Me.SliderInputRadioButton.UseVisualStyleBackColor = True
         '
         'XAxisTrackBar
@@ -102,6 +106,7 @@ Partial Class EtchASketchForm
         Me.XAxisTrackBar.TabIndex = 0
         Me.XAxisTrackBar.TickFrequency = 0
         Me.XAxisTrackBar.TickStyle = System.Windows.Forms.TickStyle.Both
+        Me.ToolTip1.SetToolTip(Me.XAxisTrackBar, "Draw On X Axis")
         Me.XAxisTrackBar.Value = 128
         '
         'YAxisTrackBar
@@ -115,6 +120,7 @@ Partial Class EtchASketchForm
         Me.YAxisTrackBar.TabIndex = 1
         Me.YAxisTrackBar.TickFrequency = 0
         Me.YAxisTrackBar.TickStyle = System.Windows.Forms.TickStyle.Both
+        Me.ToolTip1.SetToolTip(Me.YAxisTrackBar, "Draw On Y Axis")
         Me.YAxisTrackBar.Value = 128
         '
         'XAxisSliderLabel
@@ -150,7 +156,7 @@ Partial Class EtchASketchForm
         'ToolStrip1
         '
         Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ComSelectComboBox, Me.ToolStripChangeBackColorButton, Me.ToolStripChangePenColorButton, Me.ToolStripChangePenSizeButton})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripChangeBackColorButton, Me.ToolStripChangePenColorButton, Me.ToolStripChangePenSizeButton, Me.ComSelectComboBox})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.Size = New System.Drawing.Size(954, 28)
@@ -161,6 +167,7 @@ Partial Class EtchASketchForm
         '
         Me.ComSelectComboBox.Name = "ComSelectComboBox"
         Me.ComSelectComboBox.Size = New System.Drawing.Size(121, 28)
+        Me.ComSelectComboBox.ToolTipText = "Select COM Port"
         '
         'ToolStripChangeBackColorButton
         '
