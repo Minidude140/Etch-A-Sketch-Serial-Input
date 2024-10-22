@@ -174,6 +174,7 @@ Partial Class EtchASketchForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.Color.Red
         Me.ClientSize = New System.Drawing.Size(954, 592)
         Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.YAxisSliderLabel)

@@ -50,7 +50,6 @@ Public Class EtchASketchForm
     Public Sub ChangeColor(newColor As Color, Optional changePenColor As Boolean = True)
         If changePenColor = True Then
             'change pen color
-            'penColor.set = newColor
             Me.foregroundColor = newColor
         Else
             'change background color
