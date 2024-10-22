@@ -128,5 +128,8 @@
   <ItemGroup>
     <None Include="Resources\icons8-color-swatch-48.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-reset-48.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

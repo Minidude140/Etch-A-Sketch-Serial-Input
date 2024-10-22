@@ -332,4 +332,8 @@ Public Class EtchASketchForm
         ColorDialog.ShowDialog()
         ChangeColor(ColorDialog.Color, False)
     End Sub
+
+    Private Sub ToolStripResetDefaultsButton_Click(sender As Object, e As EventArgs) Handles ToolStripResetDefaultsButton.Click
+        SetDefaults()
+    End Sub
 End Class
