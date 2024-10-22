@@ -11,8 +11,6 @@
 '[*]When Serial Input is Selected Prompt user for Com input
 '[*]Input Serial Data and Draw with it
 '[*]Test Com for QY Board when Com is Selected
-'[]Move X Slider with left right arrow Keys
-'[]Move Y Slider with up down arrow keys
 
 Imports System.Threading
 
@@ -37,6 +35,8 @@ Public Class EtchASketchForm
         ChangeColor(backGroundColor, False)
         'Set default pen size
         Me.PenSize = 2
+        'Rescale old Value X and Y to Screen size (from Slider input)
+        DrawFromValue(XAxisTrackBar.Value, YAxisTrackBar.Value, XAxisTrackBar.Maximum)
         'Erase the screen
         DrawingPictureBox.Refresh()
     End Sub
@@ -101,15 +101,17 @@ Public Class EtchASketchForm
     ''' </summary>
     ''' <param name="x"></param>
     ''' <param name="y"></param>
-    Sub DrawFromValue(x As Integer, y As Integer, maxInput As Integer)
+    Sub DrawFromValue(x As Integer, y As Integer, maxInput As Integer, Optional draw As Boolean = True)
         'Scale Input Value to Picture Box Height and Width
         x = (DrawingPictureBox.Width / maxInput) * x
         y = (DrawingPictureBox.Height / maxInput) * y
-        'Draw Line From Old Position to Current Position
-        DrawLine(oldXValue, oldYValue, x, y)
+        If draw = True Then
+            'Draw Line From Old Position to Current Position
+            DrawLine(oldXValue, oldYValue, x, y)
+        End If
         'Store Current Position as Old Position
         oldXValue = x
-        oldYValue = y
+            oldYValue = y
     End Sub
 
     ''' <summary>
@@ -215,6 +217,8 @@ Public Class EtchASketchForm
         DrawingPictureBox.Refresh()
         'Shake the screen up and down
         ShakeScreen()
+        'Set Control to Focus on Slider X
+        XAxisTrackBar.Focus()
     End Sub
 
     Private Sub XAxisTrackBar_ValueChanged(sender As Object, e As EventArgs) Handles XAxisTrackBar.ValueChanged
@@ -261,7 +265,7 @@ Public Class EtchASketchForm
                 oldXValue = Qy_AnalogReadA1()
                 oldYValue = Qy_AnalogReadA2()
                 'Rescale Old value X and Y to Screen Size (from analog input)
-                DrawFromValue(oldXValue, oldYValue, 250)
+                DrawFromValue(oldXValue, oldYValue, 250, False)
             Catch
                 'Com not available Prompt User
                 MsgBox("Please Select a COM Port")
