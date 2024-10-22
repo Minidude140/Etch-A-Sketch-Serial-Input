@@ -8,9 +8,9 @@
 'TODO
 '[]Add Tool Strip For Color Change and Pen Size
 '[]Add Menu Strip and about form
-'[]When Serial Input is Selected Prompt user for Com input
+'[*]When Serial Input is Selected Prompt user for Com input
 '[*]Input Serial Data and Draw with it
-'[]Test Com for QY Board when Com is Selected
+'[*]Test Com for QY Board when Com is Selected
 '[]Move X Slider with left right arrow Keys
 '[]Move Y Slider with up down arrow keys
 
@@ -175,6 +175,7 @@ Public Class EtchASketchForm
     ''' </summary>
     ''' <returns></returns>
     Function GetQySettings() As Boolean
+        'Boolean Used to Check if COM is a Qy@ Board
         Dim isQY As Boolean = False
         'command QY Board to output settings data
         Dim command(0) As Byte
@@ -190,6 +191,7 @@ Public Class EtchASketchForm
         If data.Length < 61 Then
             'do nothing
         ElseIf data(58) = 81 And data(59) = 121 And data(60) = 64 Then
+            'COM Selected is a Qy@ Board
             isQY = True
         End If
         Return isQY
@@ -290,4 +292,23 @@ Public Class EtchASketchForm
         End If
     End Sub
 
+    Private Sub ComSelectComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComSelectComboBox.SelectedIndexChanged
+        If ComSelectComboBox.SelectedIndex = -1 Then
+        Else
+            Try
+                OpenComPort()
+                If GetQySettings() = True Then
+                    MsgBox("Selected COM Port is a QY@ Board")
+                    SerialInputRadioButton.Enabled = True
+                Else
+                    MsgBox("Selected COM Port is not a QY@ Board")
+                End If
+            Catch ex As Exception
+                MsgBox("Sorry We Could Not Connect to Selected COM")
+                'ComSelectComboBox.SelectedIndex = -1
+                SerialInputRadioButton.Enabled = False
+            End Try
+            SerialPort1.Close()
+        End If
+    End Sub
 End Class
