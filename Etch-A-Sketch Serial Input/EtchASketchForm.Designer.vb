@@ -23,10 +23,8 @@ Partial Class EtchASketchForm
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(EtchASketchForm))
         Me.QuitButton = New System.Windows.Forms.Button()
         Me.EraseButton = New System.Windows.Forms.Button()
-        Me.DrawingPictureBox = New System.Windows.Forms.PictureBox()
         Me.SerialInputRadioButton = New System.Windows.Forms.RadioButton()
         Me.SliderInputRadioButton = New System.Windows.Forms.RadioButton()
         Me.XAxisTrackBar = New System.Windows.Forms.TrackBar()
@@ -37,13 +35,15 @@ Partial Class EtchASketchForm
         Me.SerialPort1 = New System.IO.Ports.SerialPort(Me.components)
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.ComSelectComboBox = New System.Windows.Forms.ToolStripComboBox()
-        Me.ToolStripChangePenColorButton = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripChangeBackColorButton = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripChangePenColorButton = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripChangePenSizeButton = New System.Windows.Forms.ToolStripButton()
-        CType(Me.DrawingPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.DrawingPictureBox = New System.Windows.Forms.PictureBox()
+        Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         CType(Me.XAxisTrackBar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.YAxisTrackBar, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ToolStrip1.SuspendLayout()
+        CType(Me.DrawingPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'QuitButton
@@ -68,18 +68,6 @@ Partial Class EtchASketchForm
         Me.EraseButton.TabIndex = 2
         Me.EraseButton.Text = "&Erase"
         Me.EraseButton.UseVisualStyleBackColor = True
-        '
-        'DrawingPictureBox
-        '
-        Me.DrawingPictureBox.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.DrawingPictureBox.BackColor = System.Drawing.Color.BlanchedAlmond
-        Me.DrawingPictureBox.Location = New System.Drawing.Point(12, 42)
-        Me.DrawingPictureBox.Name = "DrawingPictureBox"
-        Me.DrawingPictureBox.Size = New System.Drawing.Size(930, 424)
-        Me.DrawingPictureBox.TabIndex = 2
-        Me.DrawingPictureBox.TabStop = False
         '
         'SerialInputRadioButton
         '
@@ -162,7 +150,7 @@ Partial Class EtchASketchForm
         'ToolStrip1
         '
         Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ComSelectComboBox, Me.ToolStripChangePenColorButton, Me.ToolStripChangeBackColorButton, Me.ToolStripChangePenSizeButton})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ComSelectComboBox, Me.ToolStripChangeBackColorButton, Me.ToolStripChangePenColorButton, Me.ToolStripChangePenSizeButton})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.Size = New System.Drawing.Size(954, 28)
@@ -174,32 +162,47 @@ Partial Class EtchASketchForm
         Me.ComSelectComboBox.Name = "ComSelectComboBox"
         Me.ComSelectComboBox.Size = New System.Drawing.Size(121, 28)
         '
-        'ToolStripChangePenColorButton
-        '
-        Me.ToolStripChangePenColorButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripChangePenColorButton.Image = CType(resources.GetObject("ToolStripChangePenColorButton.Image"), System.Drawing.Image)
-        Me.ToolStripChangePenColorButton.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripChangePenColorButton.Name = "ToolStripChangePenColorButton"
-        Me.ToolStripChangePenColorButton.Size = New System.Drawing.Size(29, 25)
-        Me.ToolStripChangePenColorButton.Text = "ToolStripButton1"
-        '
         'ToolStripChangeBackColorButton
         '
         Me.ToolStripChangeBackColorButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripChangeBackColorButton.Image = CType(resources.GetObject("ToolStripChangeBackColorButton.Image"), System.Drawing.Image)
+        Me.ToolStripChangeBackColorButton.Image = Global.Etch_A_Sketch_Serial_Input.My.Resources.Resources.icons8_color_swatch_48
         Me.ToolStripChangeBackColorButton.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripChangeBackColorButton.Name = "ToolStripChangeBackColorButton"
         Me.ToolStripChangeBackColorButton.Size = New System.Drawing.Size(29, 25)
         Me.ToolStripChangeBackColorButton.Text = "ToolStripButton2"
+        Me.ToolStripChangeBackColorButton.ToolTipText = "Change BackGround Color"
+        '
+        'ToolStripChangePenColorButton
+        '
+        Me.ToolStripChangePenColorButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripChangePenColorButton.Image = Global.Etch_A_Sketch_Serial_Input.My.Resources.Resources.icons8_color_dropper_48
+        Me.ToolStripChangePenColorButton.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripChangePenColorButton.Name = "ToolStripChangePenColorButton"
+        Me.ToolStripChangePenColorButton.Size = New System.Drawing.Size(29, 25)
+        Me.ToolStripChangePenColorButton.Text = "ToolStripButton1"
+        Me.ToolStripChangePenColorButton.ToolTipText = "Change Pen Color"
         '
         'ToolStripChangePenSizeButton
         '
         Me.ToolStripChangePenSizeButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripChangePenSizeButton.Image = CType(resources.GetObject("ToolStripChangePenSizeButton.Image"), System.Drawing.Image)
+        Me.ToolStripChangePenSizeButton.Image = Global.Etch_A_Sketch_Serial_Input.My.Resources.Resources.icons8_edit_48
         Me.ToolStripChangePenSizeButton.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripChangePenSizeButton.Name = "ToolStripChangePenSizeButton"
         Me.ToolStripChangePenSizeButton.Size = New System.Drawing.Size(29, 25)
         Me.ToolStripChangePenSizeButton.Text = "ToolStripButton1"
+        Me.ToolStripChangePenSizeButton.ToolTipText = "Change Pen Size"
+        '
+        'DrawingPictureBox
+        '
+        Me.DrawingPictureBox.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.DrawingPictureBox.BackColor = System.Drawing.Color.BlanchedAlmond
+        Me.DrawingPictureBox.Location = New System.Drawing.Point(12, 42)
+        Me.DrawingPictureBox.Name = "DrawingPictureBox"
+        Me.DrawingPictureBox.Size = New System.Drawing.Size(930, 424)
+        Me.DrawingPictureBox.TabIndex = 2
+        Me.DrawingPictureBox.TabStop = False
         '
         'EtchASketchForm
         '
@@ -220,11 +223,11 @@ Partial Class EtchASketchForm
         Me.MinimumSize = New System.Drawing.Size(972, 280)
         Me.Name = "EtchASketchForm"
         Me.Text = "Etch-A-Sketch"
-        CType(Me.DrawingPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.XAxisTrackBar, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.YAxisTrackBar, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ToolStrip1.ResumeLayout(False)
         Me.ToolStrip1.PerformLayout()
+        CType(Me.DrawingPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -246,4 +249,5 @@ Partial Class EtchASketchForm
     Friend WithEvents ToolStripChangePenColorButton As ToolStripButton
     Friend WithEvents ToolStripChangeBackColorButton As ToolStripButton
     Friend WithEvents ToolStripChangePenSizeButton As ToolStripButton
+    Friend WithEvents ToolTip1 As ToolTip
 End Class
