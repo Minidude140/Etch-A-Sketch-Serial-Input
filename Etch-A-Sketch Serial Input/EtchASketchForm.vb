@@ -322,4 +322,14 @@ Public Class EtchASketchForm
             PenSize = 2
         End If
     End Sub
+
+    Private Sub ToolStripChangePenColorButton_Click(sender As Object, e As EventArgs) Handles ToolStripChangePenColorButton.Click
+        ColorDialog.ShowDialog()
+        ChangeColor(ColorDialog.Color)
+    End Sub
+
+    Private Sub ToolStripChangeBackColorButton_Click(sender As Object, e As EventArgs) Handles ToolStripChangeBackColorButton.Click
+        ColorDialog.ShowDialog()
+        ChangeColor(ColorDialog.Color, False)
+    End Sub
 End Class

@@ -40,6 +40,7 @@ Partial Class EtchASketchForm
         Me.ToolStripChangePenSizeButton = New System.Windows.Forms.ToolStripButton()
         Me.DrawingPictureBox = New System.Windows.Forms.PictureBox()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.ColorDialog = New System.Windows.Forms.ColorDialog()
         CType(Me.XAxisTrackBar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.YAxisTrackBar, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ToolStrip1.SuspendLayout()
@@ -257,4 +258,5 @@ Partial Class EtchASketchForm
     Friend WithEvents ToolStripChangeBackColorButton As ToolStripButton
     Friend WithEvents ToolStripChangePenSizeButton As ToolStripButton
     Friend WithEvents ToolTip1 As ToolTip
+    Friend WithEvents ColorDialog As ColorDialog
 End Class
