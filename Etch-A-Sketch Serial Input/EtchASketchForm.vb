@@ -114,7 +114,7 @@ Public Class EtchASketchForm
     End Sub
 
     ''' <summary>
-    ''' Opens Serial Port "COM5" at Set 9600 Baud
+    ''' Opens Serial Port selected in the combo box and set 9600 Baud
     ''' </summary>
     Sub OpenComPort()
         'Set up port name and baud rate
