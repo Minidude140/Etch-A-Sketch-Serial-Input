@@ -341,4 +341,8 @@ Public Class EtchASketchForm
                                                                                              ResetDefaultsMenuStrip.Click
         SetDefaults()
     End Sub
+
+    Private Sub AboutMenuStrip_Click(sender As Object, e As EventArgs) Handles AboutMenuStrip.Click
+        AboutForm.Show()
+    End Sub
 End Class
