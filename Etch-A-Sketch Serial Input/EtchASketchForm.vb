@@ -7,7 +7,7 @@
 
 'TODO
 '[*]Add Tool Strip For Color Change and Pen Size
-'[]Add Menu Strip and about form
+'[*]Add Menu Strip and about form
 '[*]When Serial Input is Selected Prompt user for Com input
 '[*]Input Serial Data and Draw with it
 '[*]Test Com for QY Board when Com is Selected
