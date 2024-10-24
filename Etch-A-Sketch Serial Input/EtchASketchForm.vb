@@ -211,7 +211,8 @@ Public Class EtchASketchForm
         Me.Close()
     End Sub
 
-    Private Sub EraseButton_Click(sender As Object, e As EventArgs) Handles EraseButton.Click
+    Private Sub EraseButton_Click(sender As Object, e As EventArgs) Handles EraseButton.Click,
+                                                                            EraseMenuStrip.Click
         'Erase the current drawings
         DrawingPictureBox.Refresh()
         'Shake the screen up and down
@@ -315,7 +316,8 @@ Public Class EtchASketchForm
         End If
     End Sub
 
-    Private Sub ToolStripChangePenSizeButton_Click(sender As Object, e As EventArgs) Handles ToolStripChangePenSizeButton.Click
+    Private Sub ToolStripChangePenSizeButton_Click(sender As Object, e As EventArgs) Handles ToolStripChangePenSizeButton.Click,
+                                                                                             ChangePenSizeMenuStrip.Click
         If PenSize < 30 Then
             PenSize = PenSize * 2
         Else
@@ -323,17 +325,20 @@ Public Class EtchASketchForm
         End If
     End Sub
 
-    Private Sub ToolStripChangePenColorButton_Click(sender As Object, e As EventArgs) Handles ToolStripChangePenColorButton.Click
+    Private Sub ToolStripChangePenColorButton_Click(sender As Object, e As EventArgs) Handles ToolStripChangePenColorButton.Click,
+                                                                                              ChangePenColorMenuStrip.Click
         ColorDialog.ShowDialog()
         ChangeColor(ColorDialog.Color)
     End Sub
 
-    Private Sub ToolStripChangeBackColorButton_Click(sender As Object, e As EventArgs) Handles ToolStripChangeBackColorButton.Click
+    Private Sub ToolStripChangeBackColorButton_Click(sender As Object, e As EventArgs) Handles ToolStripChangeBackColorButton.Click,
+                                                                                               ChangeBackGroundColorMenuStrip.Click
         ColorDialog.ShowDialog()
         ChangeColor(ColorDialog.Color, False)
     End Sub
 
-    Private Sub ToolStripResetDefaultsButton_Click(sender As Object, e As EventArgs) Handles ToolStripResetDefaultsButton.Click
+    Private Sub ToolStripResetDefaultsButton_Click(sender As Object, e As EventArgs) Handles ToolStripResetDefaultsButton.Click,
+                                                                                             ResetDefaultsMenuStrip.Click
         SetDefaults()
     End Sub
 End Class

@@ -34,22 +34,31 @@ Partial Class EtchASketchForm
         Me.SerialInputTimer = New System.Windows.Forms.Timer(Me.components)
         Me.SerialPort1 = New System.IO.Ports.SerialPort(Me.components)
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
+        Me.ToolStripChangeBackColorButton = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripChangePenColorButton = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripChangePenSizeButton = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripResetDefaultsButton = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripCOMSelectLabel = New System.Windows.Forms.ToolStripLabel()
         Me.ComSelectComboBox = New System.Windows.Forms.ToolStripComboBox()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.ColorDialog = New System.Windows.Forms.ColorDialog()
-        Me.ToolStripChangeBackColorButton = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripChangePenColorButton = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripChangePenSizeButton = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripResetDefaultsButton = New System.Windows.Forms.ToolStripButton()
         Me.DrawingPictureBox = New System.Windows.Forms.PictureBox()
-        Me.ToolStripCOMSelectLabel = New System.Windows.Forms.ToolStripLabel()
-        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
+        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
+        Me.DrawingMenuStrip = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ChangePenColorMenuStrip = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ChangePenSizeMenuStrip = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ChangeBackGroundColorMenuStrip = New System.Windows.Forms.ToolStripMenuItem()
+        Me.EraseMenuStrip = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ResetDefaultsMenuStrip = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AboutMenuStrip = New System.Windows.Forms.ToolStripMenuItem()
         CType(Me.XAxisTrackBar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.YAxisTrackBar, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ToolStrip1.SuspendLayout()
         CType(Me.DrawingPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'QuitButton
@@ -163,17 +172,11 @@ Partial Class EtchASketchForm
         '
         Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripChangeBackColorButton, Me.ToolStripSeparator3, Me.ToolStripChangePenColorButton, Me.ToolStripChangePenSizeButton, Me.ToolStripSeparator2, Me.ToolStripResetDefaultsButton, Me.ToolStripSeparator1, Me.ToolStripCOMSelectLabel, Me.ComSelectComboBox})
-        Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.ToolStrip1.Location = New System.Drawing.Point(0, 28)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.Size = New System.Drawing.Size(954, 28)
         Me.ToolStrip1.TabIndex = 9
         Me.ToolStrip1.Text = "ToolStrip1"
-        '
-        'ComSelectComboBox
-        '
-        Me.ComSelectComboBox.Name = "ComSelectComboBox"
-        Me.ComSelectComboBox.Size = New System.Drawing.Size(121, 28)
-        Me.ComSelectComboBox.ToolTipText = "Select COM Port"
         '
         'ToolStripChangeBackColorButton
         '
@@ -184,6 +187,11 @@ Partial Class EtchASketchForm
         Me.ToolStripChangeBackColorButton.Size = New System.Drawing.Size(29, 25)
         Me.ToolStripChangeBackColorButton.Text = "ToolStripButton2"
         Me.ToolStripChangeBackColorButton.ToolTipText = "Change BackGround Color"
+        '
+        'ToolStripSeparator3
+        '
+        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 28)
         '
         'ToolStripChangePenColorButton
         '
@@ -205,6 +213,11 @@ Partial Class EtchASketchForm
         Me.ToolStripChangePenSizeButton.Text = "ToolStripButton1"
         Me.ToolStripChangePenSizeButton.ToolTipText = "Change Pen Size"
         '
+        'ToolStripSeparator2
+        '
+        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 28)
+        '
         'ToolStripResetDefaultsButton
         '
         Me.ToolStripResetDefaultsButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
@@ -214,17 +227,10 @@ Partial Class EtchASketchForm
         Me.ToolStripResetDefaultsButton.Size = New System.Drawing.Size(29, 25)
         Me.ToolStripResetDefaultsButton.Text = "Reset Colors To Default"
         '
-        'DrawingPictureBox
+        'ToolStripSeparator1
         '
-        Me.DrawingPictureBox.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.DrawingPictureBox.BackColor = System.Drawing.Color.BlanchedAlmond
-        Me.DrawingPictureBox.Location = New System.Drawing.Point(12, 42)
-        Me.DrawingPictureBox.Name = "DrawingPictureBox"
-        Me.DrawingPictureBox.Size = New System.Drawing.Size(930, 424)
-        Me.DrawingPictureBox.TabIndex = 2
-        Me.DrawingPictureBox.TabStop = False
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 28)
         '
         'ToolStripCOMSelectLabel
         '
@@ -232,20 +238,76 @@ Partial Class EtchASketchForm
         Me.ToolStripCOMSelectLabel.Size = New System.Drawing.Size(127, 25)
         Me.ToolStripCOMSelectLabel.Text = "Select Serial COM"
         '
-        'ToolStripSeparator1
+        'ComSelectComboBox
         '
-        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 28)
+        Me.ComSelectComboBox.Name = "ComSelectComboBox"
+        Me.ComSelectComboBox.Size = New System.Drawing.Size(121, 28)
+        Me.ComSelectComboBox.ToolTipText = "Select COM Port"
         '
-        'ToolStripSeparator2
+        'DrawingPictureBox
         '
-        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 28)
+        Me.DrawingPictureBox.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.DrawingPictureBox.BackColor = System.Drawing.Color.BlanchedAlmond
+        Me.DrawingPictureBox.Location = New System.Drawing.Point(12, 59)
+        Me.DrawingPictureBox.Name = "DrawingPictureBox"
+        Me.DrawingPictureBox.Size = New System.Drawing.Size(930, 407)
+        Me.DrawingPictureBox.TabIndex = 2
+        Me.DrawingPictureBox.TabStop = False
         '
-        'ToolStripSeparator3
+        'MenuStrip1
         '
-        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 28)
+        Me.MenuStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DrawingMenuStrip, Me.AboutMenuStrip})
+        Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.MenuStrip1.Name = "MenuStrip1"
+        Me.MenuStrip1.Size = New System.Drawing.Size(954, 28)
+        Me.MenuStrip1.TabIndex = 10
+        Me.MenuStrip1.Text = "MenuStrip1"
+        '
+        'DrawingMenuStrip
+        '
+        Me.DrawingMenuStrip.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ChangePenColorMenuStrip, Me.ChangePenSizeMenuStrip, Me.ChangeBackGroundColorMenuStrip, Me.EraseMenuStrip, Me.ResetDefaultsMenuStrip})
+        Me.DrawingMenuStrip.Name = "DrawingMenuStrip"
+        Me.DrawingMenuStrip.Size = New System.Drawing.Size(79, 24)
+        Me.DrawingMenuStrip.Text = "Drawing"
+        '
+        'ChangePenColorMenuStrip
+        '
+        Me.ChangePenColorMenuStrip.Name = "ChangePenColorMenuStrip"
+        Me.ChangePenColorMenuStrip.Size = New System.Drawing.Size(266, 26)
+        Me.ChangePenColorMenuStrip.Text = "Change Pen Color"
+        '
+        'ChangePenSizeMenuStrip
+        '
+        Me.ChangePenSizeMenuStrip.Name = "ChangePenSizeMenuStrip"
+        Me.ChangePenSizeMenuStrip.Size = New System.Drawing.Size(266, 26)
+        Me.ChangePenSizeMenuStrip.Text = "Change Pen Size"
+        '
+        'ChangeBackGroundColorMenuStrip
+        '
+        Me.ChangeBackGroundColorMenuStrip.Name = "ChangeBackGroundColorMenuStrip"
+        Me.ChangeBackGroundColorMenuStrip.Size = New System.Drawing.Size(266, 26)
+        Me.ChangeBackGroundColorMenuStrip.Text = "Change BackGround Color"
+        '
+        'EraseMenuStrip
+        '
+        Me.EraseMenuStrip.Name = "EraseMenuStrip"
+        Me.EraseMenuStrip.Size = New System.Drawing.Size(266, 26)
+        Me.EraseMenuStrip.Text = "Erase"
+        '
+        'ResetDefaultsMenuStrip
+        '
+        Me.ResetDefaultsMenuStrip.Name = "ResetDefaultsMenuStrip"
+        Me.ResetDefaultsMenuStrip.Size = New System.Drawing.Size(266, 26)
+        Me.ResetDefaultsMenuStrip.Text = "Reset Defaults"
+        '
+        'AboutMenuStrip
+        '
+        Me.AboutMenuStrip.Name = "AboutMenuStrip"
+        Me.AboutMenuStrip.Size = New System.Drawing.Size(64, 24)
+        Me.AboutMenuStrip.Text = "About"
         '
         'EtchASketchForm
         '
@@ -254,6 +316,7 @@ Partial Class EtchASketchForm
         Me.BackColor = System.Drawing.Color.Red
         Me.ClientSize = New System.Drawing.Size(954, 592)
         Me.Controls.Add(Me.ToolStrip1)
+        Me.Controls.Add(Me.MenuStrip1)
         Me.Controls.Add(Me.YAxisSliderLabel)
         Me.Controls.Add(Me.XAxisSliderLabel)
         Me.Controls.Add(Me.YAxisTrackBar)
@@ -263,6 +326,7 @@ Partial Class EtchASketchForm
         Me.Controls.Add(Me.DrawingPictureBox)
         Me.Controls.Add(Me.EraseButton)
         Me.Controls.Add(Me.QuitButton)
+        Me.MainMenuStrip = Me.MenuStrip1
         Me.MinimumSize = New System.Drawing.Size(972, 280)
         Me.Name = "EtchASketchForm"
         Me.Text = "Etch-A-Sketch"
@@ -271,6 +335,8 @@ Partial Class EtchASketchForm
         Me.ToolStrip1.ResumeLayout(False)
         Me.ToolStrip1.PerformLayout()
         CType(Me.DrawingPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.MenuStrip1.ResumeLayout(False)
+        Me.MenuStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -299,4 +365,12 @@ Partial Class EtchASketchForm
     Friend WithEvents ToolStripSeparator2 As ToolStripSeparator
     Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
     Friend WithEvents ToolStripCOMSelectLabel As ToolStripLabel
+    Friend WithEvents MenuStrip1 As MenuStrip
+    Friend WithEvents DrawingMenuStrip As ToolStripMenuItem
+    Friend WithEvents ChangePenColorMenuStrip As ToolStripMenuItem
+    Friend WithEvents ChangePenSizeMenuStrip As ToolStripMenuItem
+    Friend WithEvents ChangeBackGroundColorMenuStrip As ToolStripMenuItem
+    Friend WithEvents EraseMenuStrip As ToolStripMenuItem
+    Friend WithEvents AboutMenuStrip As ToolStripMenuItem
+    Friend WithEvents ResetDefaultsMenuStrip As ToolStripMenuItem
 End Class
